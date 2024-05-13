@@ -1,7 +1,7 @@
 export const data = [
   {
     id: 1,
-    img: "./assets/im1.png",
+    img: "./assets/images/im1.png",
     nom: "MacBook Pro Desktop",
     prix: 2500,
     description:
@@ -10,7 +10,7 @@ export const data = [
   },
   {
     id: 2,
-    img: "./assets/im2.png",
+    img: "./assets/images/im2.png",
     nom: "Casquette Microphone JBL T450 Sound Ecouteur",
     prix: 80,
     description:
@@ -19,7 +19,7 @@ export const data = [
   },
   {
     id: 3,
-    img: "./assets/im3.png",
+    img: "./assets/images/im3.png",
     nom: "Hard External drive 1TB 2.0",
     prix: 100,
     description:
@@ -28,7 +28,7 @@ export const data = [
   },
   {
     id: 4,
-    img: "./assets/im4.png",
+    img: "./assets/images/im4.png",
     nom: "Black modem router, Wireless router Wi-Fi",
     prix: 85,
     description:
@@ -37,7 +37,7 @@ export const data = [
   },
   {
     id: 5,
-    img: "./assets/im5.png",
+    img: "./assets/images/im5.png",
     nom: "Asus Red hat NVIDIA GeForce GTX 1080 Ti 11GB GDDR5X",
     prix: 400,
     description:
@@ -46,7 +46,7 @@ export const data = [
   },
   {
     id: 6,
-    img: "./assets/im6.png",
+    img: "./assets/images/im6.png",
     nom: "AirPods Pro 3",
     prix: 35,
     description:
@@ -55,7 +55,7 @@ export const data = [
   },
   {
     id: 7,
-    img: "./assets/im7.png",
+    img: "./assets/images/im7.png",
     nom: "Keyboard Gaming RGB LED Backlit Wired Keyboard",
     prix: 90,
     description:
@@ -64,7 +64,7 @@ export const data = [
   },
   {
     id: 8,
-    img: "./assets/im8.png",
+    img: "./assets/images/im8.png",
     nom: "Mouse LED Optical USB Mouse",
     prix: 20,
     description:
@@ -73,7 +73,7 @@ export const data = [
   },
   {
     id: 9,
-    img: "./assets/im9.png",
+    img: "./assets/images/im9.png",
     nom: "MacBook Air Laptop",
     prix: 1500,
     description:
@@ -82,7 +82,7 @@ export const data = [
   },
   {
     id: 10,
-    img: "./assets/im10.png",
+    img: "./assets/images/im10.png",
     nom: "Keyboard LogiTech Keyboard",
     prix: 15,
     description:
@@ -91,7 +91,7 @@ export const data = [
   },
   {
     id: 11,
-    img: "./assets/im11.png",
+    img: "./assets/images/im11.png",
     nom: "Mouse LogiTech Black Mouse",
     prix: 10,
     description:
@@ -100,7 +100,7 @@ export const data = [
   },
   {
     id: 12,
-    img: "./assets/im12.png",
+    img: "./assets/images/im12.png",
     nom: "HP i7 Intel Core Laptop 16GB RAM 1TB HDD 15.6 inch",
     prix: 350,
     description:
@@ -109,7 +109,7 @@ export const data = [
   },
   {
     id: 13,
-    img: "./assets/im13.png",
+    img: "./assets/images/im13.png",
     nom: "Wireless Router Wi-Fi IEEE",
     prix: 79,
     description:
@@ -118,7 +118,7 @@ export const data = [
   },
   {
     id: 14,
-    img: "./assets/im14.png",
+    img: "./assets/images/im14.png",
     nom: "HP i7 Grey Laptop 16GB RAM 1TB SSD",
     prix: 368,
     description:
@@ -127,7 +127,7 @@ export const data = [
   },
   {
     id: 15,
-    img: "./assets/im15.png",
+    img: "./assets/images/im15.png",
     nom: "PowerBank Mobile Charger",
     prix: 10,
     description:
@@ -136,7 +136,7 @@ export const data = [
   },
   {
     id: 16,
-    img: "./assets/im16.png",
+    img: "./assets/images/im16.png",
     nom: "MacBook Pro Xiaomi Mi Air",
     prix: 500,
     description:
@@ -145,7 +145,7 @@ export const data = [
   },
   {
     id: 17,
-    img: "./assets/im17.png",
+    img: "./assets/images/im17.png",
     nom: "Modem HUAWEI E5786 LTE Advanced MiFI 4G LTE",
     prix: 55,
     description:
@@ -154,7 +154,7 @@ export const data = [
   },
   {
     id: 18,
-    img: "./assets/im18.png",
+    img: "./assets/images/im18.png",
     nom: "Black JBL portable bluetooth speaker",
     prix: 30,
     description:
@@ -163,7 +163,7 @@ export const data = [
   },
   {
     id: 19,
-    img: "./assets/im19.png",
+    img: "./assets/images/im19.png",
     nom: "TECNO Camon 15 Pro 6GB RAM 128GB ROM",
     prix: 190,
     description:
@@ -172,7 +172,7 @@ export const data = [
   },
   {
     id: 20,
-    img: "./assets/im20.png",
+    img: "./assets/images/im20.png",
     nom: "Microphone Yamaha Sound Input",
     prix: 68,
     description:
