@@ -56,16 +56,16 @@ export const generateDialogHTML = (product) => {
     <div class="accessoire">
       <div class="bottom">
         <div class="carte-cat">
-          <img src="/assets/im6.png" />
+          <img src="/assets/images/im6.png" />
         </div>
         <div class="carte-cat">
-          <img src="/assets/im6.png" />
+          <img src="/assets/images/im7.png" />
         </div>
         <div class="carte-cat">
-          <img src="/assets/im6.png" />
+          <img src="/assets/images/im8.png" />
         </div>
         <div class="carte-cat">
-          <img src="/assets/im6.png" />
+          <img src="/assets/images/im9.png" />
         </div>
         <div class="carte-cat">
           <p>...</p>

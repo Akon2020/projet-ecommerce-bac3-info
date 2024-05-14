@@ -173,11 +173,18 @@ chekout.addEventListener("click", () => {
 const panier = document.querySelector(".carte");
 const dialogy = document.querySelector("#dialogy");
 const dialogyClose = document.querySelector("#dialogy .close");
+const dialogyContainer = document.querySelector("#dialogy .container");
 
 
 panier.addEventListener("click", () => {
   dialogy.showModal();
-  
+  if (cartItems.length === 0) {
+    console.log(cartItems.length);
+  }
+  const nothing = `<div class="rien"><i class="fa-solid fa-shop-slash"></i>
+            <h2>Vous n'avez pas de produit dans votre panier</h2></div>`;
+  dialogyContainer.innerHTML = nothing;
+  console.log(cartItems.length);
 });
 
 dialogyClose.addEventListener("click", () => {

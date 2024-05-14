@@ -369,7 +369,7 @@ main .filtre {
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  margin-top: 12%;
+  margin: 12% 0;
 }
 .rien i{
   font-size: 5rem;
