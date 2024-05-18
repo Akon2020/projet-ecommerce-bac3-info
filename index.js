@@ -1,5 +1,9 @@
 import { data } from "./data.js";
-import { generateDialogHTML, generateProductHTML } from "./functions.js";
+import {
+  generateDialogHTML,
+  generateProductHTML,
+  generatePanier,
+} from "./functions.js";
 
 // selection des elements
 const productsContainer = document.querySelector(".produits");
@@ -159,36 +163,175 @@ btnClose.addEventListener("click", () => {
   dialog.close();
 });
 
-// const chek out = document.getElementById("chekout");
-/* chekout.forEach((element) => {
-  element.addEventListener("click", () => {
-    alert("Bonjour toi");
-  });
-}); */ /* 
-chekout.addEventListener("click", () => {
-  alert("Bonjour toi");
-}); */
-
 // Affichage des éléments du panier
 const panier = document.querySelector(".carte");
 const dialogy = document.querySelector("#dialogy");
 const dialogyClose = document.querySelector("#dialogy .close");
 const dialogyContainer = document.querySelector("#dialogy .container");
 
-
 panier.addEventListener("click", () => {
   dialogy.showModal();
+  dialogy.scrollTo(0, 0);
   if (cartItems.length === 0) {
     console.log(cartItems.length);
+    const nothing = `<div class="rien"><i class="fa-solid fa-shop-slash"></i>
+              <h2>Vous n'avez pas de produit dans votre panier</h2></div>`;
+    dialogyContainer.innerHTML = nothing;
+  } else {
+    const montantTotal = cartItems.reduce(
+      (total, item) => total + item.prix,
+      0
+    );
+    const itemsHTML = `<div class="dialogyItem">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Designation du produit</th>
+                <th>Prix</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${cartItems
+                .map((item, i) => {
+                  return `<tr>
+                    <td>${i + 1}</td>
+                    <td>${item.nom}</td>
+                    <td>$ ${item.prix}</td>
+                    <td><i class="fa-solid fa-trash" style="cursor: pointer;" onclick="supprimerProd(${
+                      item.id
+                    })"></i></td>
+                  </tr>`;
+                })
+                .join("")}
+            </tbody>
+          </table>
+        </div>`;
+    const info = `<div class="info">
+      <h2>Panier - Bukavu COP</h2>
+      <div class="paiementTot"> Montant total à payer: $ ${montantTotal}</div>
+      </div>`;
+    dialogyContainer.innerHTML = info + itemsHTML;
+    // Add payment button
+    const paiementBtn = document.createElement("button");
+    paiementBtn.textContent = "Paiement sécurisé";
+    paiementBtn.classList.add("paiementBtn");
+    dialogyContainer.appendChild(paiementBtn);
+    const paiementBox = document.getElementById("paiementBox");
+    paiementBtn.addEventListener("click", () => {
+      dialogy.close();
+      paiementBox.showModal();
+      paiementBox.scrollTo(0, 0);
+    });
+    /* dialogyContainer.innerHTML = "";
+    cartItems.forEach((item) => {
+      const cartItem = document.createElement("div");
+      cartItem.classList.add("carte-produit");
+      cartItem.innerHTML = generateProductHTML(item);
+      dialogyContainer.appendChild(cartItem);
+    }); */
   }
-  const nothing = `<div class="rien"><i class="fa-solid fa-shop-slash"></i>
-            <h2>Vous n'avez pas de produit dans votre panier</h2></div>`;
-  dialogyContainer.innerHTML = nothing;
-  console.log(cartItems.length);
+});
+const supprimerProd = (elm) => {
+  cartItems = cartItems.filter((sup) => sup !== elm);
+};
+
+// Add this line to make the supprimerProd function accessible globally
+window.supprimerProd = supprimerProd;
+panier.addEventListener("click", () => {
+  dialogy.showModal();
+  dialogy.scrollTo(0, 0);
+  if (cartItems.length === 0) {
+    console.log(cartItems.length);
+    const nothing = `<div class="rien"><i class="fa-solid fa-shop-slash"></i>
+              <h2>Vous n'avez pas de produit dans votre panier</h2></div>`;
+    dialogyContainer.innerHTML = nothing;
+  } else {
+    const montantTotal = cartItems.reduce(
+      (total, item) => total + item.prix,
+      0
+    );
+    const itemsHTML = `<div class="dialogyItem">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Designation du produit</th>
+                <th>Prix</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${cartItems
+                .map((item, i) => {
+                  return `<tr>
+                    <td>${i + 1}</td>
+                    <td>${item.nom}</td>
+                    <td>$ ${item.prix}</td>
+                    <td><i class="fa-solid fa-trash" style="cursor: pointer;" id="supprim" onclick="supprimerProd(${
+                      item.id
+                    })"></i></td>
+                  </tr>`;
+                })
+                .join("")}
+            </tbody>
+          </table>
+        </div>`;
+    const info = `<div class="info">
+      <h2>Panier - Bukavu COP</h2>
+      <div class="paiementTot"> Montant total à payer: $ ${montantTotal}</div>
+      </div>`;
+    dialogyContainer.innerHTML = info + itemsHTML;
+    const trash = document.getElementById("supprim");
+    trash.addEventListener("click", (e) => {
+      supprimerProd(e);
+    });
+
+    // Add payment button
+    const paiementBtn = document.createElement("button");
+    paiementBtn.textContent = "Paiement sécurisé";
+    paiementBtn.classList.add("paiementBtn");
+    dialogyContainer.appendChild(paiementBtn);
+
+    const paiementBox = document.getElementById("paiementBox");
+    paiementBtn.addEventListener("click", () => {
+      dialogy.close();
+      paiementBox.showModal();
+      paiementBox.scrollTo(0, 0);
+    });
+    const quitterBtn = document.querySelector(".quitter");
+    const payonsForm = document.querySelector("#payonsForm");
+    const payonsBtn = document.querySelector(".payonsBtn");
+    const others = document.querySelector(".others");
+    payonsForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      payonsBtn.textContent = "Paiement accepté";
+      alert("Paiement reçu avec succès");
+      cartItems.length = 0;
+      cartItems = [];
+      payonsForm.reset();
+      paiementBox.close();
+    });
+    quitterBtn.addEventListener("click", () => {
+      paiementBox.close();
+    });
+    others.addEventListener("click", () => {
+      alert(
+        "Cette fonctionnalité est indisponible pour le moment\nMerci de d'utiliser le paiement par carte en attendant"
+      );
+    });
+
+    /* dialogyContainer.innerHTML = "";
+    cartItems.forEach((item) => {
+      const cartItem = document.createElement("div");
+      cartItem.classList.add("carte-produit");
+      cartItem.innerHTML = generateProductHTML(item);
+      dialogyContainer.appendChild(cartItem);
+    }); */
+  }
 });
 
 dialogyClose.addEventListener("click", () => {
   dialogy.close();
 });
-
-// Affichage des éléments du panier

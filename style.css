@@ -8,13 +8,18 @@
 /* Création des valeurs que nous allons utiliser */
 
 html {
-  --color-primary: #3BC59A;
+  --color-primary: #3bc59a;
   --color-secondary: #f3f3f3;
   --color-white: #fffafa;
   --color-orange: #ff6b58;
   --padding: 0 5rem;
   --dark: #333;
   --grey: #777;
+}
+/* Selection */
+::selection {
+  background-color: var(--dark);
+  color: var(--color-white);
 }
 /* Barre de défilement */
 ::-webkit-scrollbar {
@@ -263,7 +268,6 @@ main .filtre {
 
 .produits .carte-produit {
   width: 260px;
-
   gap: 0.5rem;
   padding: 0.7rem;
   border-radius: 15px;
@@ -359,11 +363,11 @@ main .filtre {
   background-color: #354555;
 }
 .item-color:nth-child(3) {
-  background-color: #3BC59A;
+  background-color: #3bc59a;
 }
 
 /* Aucun produit */
-.rien{
+.rien {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -371,10 +375,76 @@ main .filtre {
   gap: 3rem;
   margin: 12% 0;
 }
-.rien i{
+.rien i {
   font-size: 5rem;
 }
 
+/* Style pour les éléments du panier */
+.dialogyItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--color-white);
+  margin-bottom: 1rem;
+}
+.dialogyItem table {
+  flex: 1;
+  justify-content: center;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  border-collapse: collapse;
+}
+.dialogyItem thead {
+  margin-bottom: 1rem;
+}
+
+.dialogyItem table td {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid black;
+}
+
+/* .dialogyItem table td:nth-child(2) {
+  height: 10%;
+  width: 1rem;
+} */
+
+.dialogyItem table td i {
+  color: var(--color-orange);
+  font-size: 1.5rem;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.info h2 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.info .paiementTot {
+  color: var(--color-orange);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.paiementBtn {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  transition: 0.5s ease;
+}
+.paiementBtn:active {
+  transform: scale(0.9);
+}
 @media screen and (max-width: 768px) {
   html {
     --padding: 0 1rem;
@@ -415,6 +485,72 @@ dialog {
   animation: animate 0.3s ease;
   position: fixed;
 }
+#paiementBox {
+  width: 40%;
+  animation: animatePaiement 0.3s ease;
+}
+#paiementBox h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#paiementBox ol{
+  font-size: 1.3rem;
+}
+#paiementBox form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+#paiementBox form input, #paiementBox form button{
+  display: flex;
+  padding: 1rem;
+  outline: none;
+  border: 1px solid var(--dark);
+  border-radius: 10px;
+}
+#paiementBox form div{
+  display: flex;
+  justify-content: start;
+}
+#paiementBox .payonsBtn{
+  outline: none;
+  border: none;
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.13rem;
+}
+.lesBtn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+.quitter, .others{
+  padding: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-orange);
+  color: white;
+  transition: .3s ease;
+}
+.others{
+  background-color: var(--dark);
+}
+.quitter:active, .others:active{
+  transform: scale(0.9);
+}
 
 dialog::-webkit-scrollbar {
   width: 0.4em;
@@ -447,6 +583,14 @@ dialog::backdrop {
   }
   100% {
     transform: translateY(0px);
+  }
+}
+@keyframes animatePaiement {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-100px);
   }
 }
 
@@ -760,6 +904,10 @@ dialog section .product-page {
     width: 100%;
     height: 100vh;
     position: fixed;
+  }
+  #paiementBox{
+    width: 100%;
+    height: 100vh;
   }
   dialog section .product-page {
     flex-direction: column;

@@ -38,30 +38,13 @@
       integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer" />
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("./sw.js")
-            .then((registration) => {
-              console.log(
-                "Service Worker registered! Scope: ",
-                registration.scope
-              );
-            })
-            .catch((err) => {
-              console.log("Service Worker registration failed: ", err);
-            });
-        });
-      }
-    </script>
   </head>
   <body>
     <main>
       <header>
         <div class="logo">
           <i class="fa-solid fa-shop"></i>
-          <p>Bukavu COP</p>
+          <p>KopConnect</p>
         </div>
         <nav>
           <ul>
@@ -135,6 +118,45 @@
           <p>Fermer</p>
         </div>
         <div class="container"></div>
+      </dialog>
+      <dialog class="one-product" id="paiementBox">
+        <h1>
+          <i class="fa-solid fa-money-bill"></i>Paiement Form<i
+            class="fa-solid fa-money-bill"></i>
+        </h1>
+        <form action="#" id="payonsForm">
+          <label for="number"></label>
+          <input
+            type="text"
+            name="number"
+            id="number"
+            placeholder="0000 - 0000 - 0000 - 0000"
+            required
+            minlength="16"
+            maxlength="16" />
+          <div>
+            <label for="expire"></label>
+            <input
+              type="month"
+              name="expire"
+              id="expire"
+              placeholder="MM/AA"
+              required />
+            <label for="cvv"></label>
+            <input
+              type="password"
+              name="cvv"
+              id="cvv"
+              placeholder="Entrez le CVV"
+              required
+              maxlength="3" />
+          </div>
+          <button class="payonsBtn">Payer</button>
+        </form>
+        <div class="lesBtn">
+          <button class="quitter">Annuler le paiement</button>
+          <button class="others">Mobile Payment</button>
+        </div>
       </dialog>
     </main>
     <script type="module" src="index.js"></script>
